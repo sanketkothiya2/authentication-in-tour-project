@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const chalk=require('chalk')
 
 
 process.on('uncaughtException', err => {
@@ -27,12 +28,12 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false
   })
-  .then(() => console.log('DB connection successful!'));
+  .then(() => console.log(chalk.blue.bgGreen.bold('DB connection successful!')));
   
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-  console.log(`App running on port ${port}...`);
+  console.log(chalk.blue.bgRed.bold(`App running on port ${port}...`));
 });
 
 process.on('unhandledRejection', err => {
