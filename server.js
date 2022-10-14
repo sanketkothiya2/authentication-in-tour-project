@@ -14,9 +14,10 @@ process.on('uncaughtException', err => {
 
 dotenv.config({ path: './config.env' });
 const app = require('./app');
-app.use(cors({
-  origin: '*'
-}));
+
+app.use(cors());
+
+app.enableCors();
 
 // const DB = process.env.DATABASE.replace(
 //   '<PASSWORD>',
