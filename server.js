@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const chalk=require('chalk')
-const cors = require('cors');
+
 
 
 
@@ -13,9 +13,13 @@ process.on('uncaughtException', err => {
 
 
 dotenv.config({ path: './config.env' });
+
+
+
 const app = require('./app');
 
-app.use(cors());
+
+
 
 
 
