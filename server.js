@@ -17,7 +17,7 @@ const app = require('./app');
 
 app.use(cors());
 
-app.enableCors();
+
 
 // const DB = process.env.DATABASE.replace(
 //   '<PASSWORD>',
