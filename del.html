@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //         fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=512&date=31-03-2021`).then((apidat)=>{
+        // return apidat.json();
+        //         }).then((actualdata)=>{
+        //             console.log(actualdata.sessions[0].name);
+        //         }).catch((err)=>{
+        //             console.log(err);
+        //         })
+
+
+        // usinbg async
+
+        async function getcoviddata() {
+            try {
+                const jsondata = await fetch('http://103.206.139.86:5000/api/v1/users');
+                const jsdata = await jsondata.json();
+                
+                console.log(jsdata);
+
+
+            } catch (error) {
+                console.log(error);
+            }
+
+
+        }
+
+        // async function data() {
+        //     try {
+        //         const jsondata = await fetch();
+        //         const finaldata = await jsondata.json();
+        //         const cs = finaldata.Countries[101]
+
+        //     }
+        //     catch (err) {
+        //         throw err
+
+        //     }
+        // }
+        getcoviddata();
+
+    </script>
+</body>
+
+</html>

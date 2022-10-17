@@ -19,15 +19,29 @@ router.patch(
 router.patch('/updateMe', authController.protect, userController.updateMe);
 router.delete('/deleteMe', authController.protect, userController.deleteMe);
 
-router
-  .route('/')
-  .get(userController.getAllUsers)
-  .post(userController.createUser);
+
+// app.delete("/delete/:_id", async (req, resp) => {
+//   console.log(req.params)
+//   let data = await Product.deleteOne(req.params);
+//   resp.send(data);
+// })
+
+
 
 router
   .route('/:id')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
   .delete(userController.deleteUser);
+
+
+router
+  .route('/')
+  .get(authController.protect,userController.getAllUsers)
+  // .post(userController.createUser);
+  
+  // router
+  // .route('/:id')
+  // .get(userController.getUser)
+  // .patch(userController.updateUser)
+  // .delete(userController.deleteUser);
 
 module.exports = router;
