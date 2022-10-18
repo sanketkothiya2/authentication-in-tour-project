@@ -11,6 +11,7 @@ exports.aliasTopTours = (req, res, next) => {
 };
 
 exports.getAllTours = catchAsync(async (req, res, next) => {
+  const total =await Tour.find()
   const features = new APIFeatures(Tour.find(), req.query)
     .filter()
     .sort()
@@ -21,7 +22,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
   // SEND RESPONSE
   res.status(200).json({
     status: 'success',
-    results: tours.length,
+    results: total.length,
     data: {
       tours
     }
