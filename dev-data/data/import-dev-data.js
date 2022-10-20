@@ -35,7 +35,6 @@ const importData = async () => {
   }
   process.exit();
 };
-
 // DELETE ALL DATA FROM DB
 const deleteData = async () => {
   try {

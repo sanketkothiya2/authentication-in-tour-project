@@ -11,7 +11,7 @@ exports.aliasTopTours = (req, res, next) => {
 };
 
 exports.getAllTours = catchAsync(async (req, res, next) => {
-  const total =await Tour.find()
+  const total = await Tour.find()
   const features = new APIFeatures(Tour.find(), req.query)
     .filter()
     .sort()
@@ -22,7 +22,8 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
   // SEND RESPONSE
   res.status(200).json({
     status: 'success',
-    results: total.length,
+    TotalResults: total.length,
+    CurrentResult: tours.length,
     data: {
       tours
     }
@@ -76,7 +77,7 @@ exports.updateTour = catchAsync(async (req, res, next) => {
 
 exports.deleteTour = catchAsync(async (req, res, next) => {
   // const tour = await Tour.findByIdAndDelete(req.params.id,(err,result)=>{
-  await Tour.findByIdAndDelete(req.params.id,(err,result)=>{
+  await Tour.findByIdAndDelete(req.params.id, (err, result) => {
     if (!err) {
       res.json({ msg: "tour  deleted", deleted: result });
     } else {

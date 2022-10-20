@@ -16,7 +16,7 @@ const tourSchema = new mongoose.Schema(
     slug: String,
     duration: {
       type: Number,
-      required: [true, 'A tour must have a duration']
+      // required: [true, 'A tour must have a duration']
     },
     maxGroupSize: {
       type: Number,
@@ -65,7 +65,7 @@ const tourSchema = new mongoose.Schema(
     },
     imageCover: {
       type: String,
-      required: [true, 'A tour must have a cover image']
+      // required: [true, 'A tour must have a cover image']
     },
     images: [String],
     createdAt: {
