@@ -13,7 +13,9 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 const cors = require('cors');
 
-
+const swaggerUI = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 // 1) GLOBAL MIDDLEWARES
 // Set security HTTP headers
@@ -72,7 +74,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(cors());
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -81,7 +83,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE,OPTIONS');
   next();
 });
-
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 // 3) ROUTES
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);

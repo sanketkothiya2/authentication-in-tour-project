@@ -1,0 +1,789 @@
+openapi: 3.0.0
+info:
+  title: tour query api master 2
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:5000/api/v1/tours
+  variables: {}
+- url: http://localhost:5000/api/v1/users
+  variables: {}
+paths:
+  /tours:
+    post:
+      tags:
+      - tours
+      summary: Create New Tour
+      operationId: CreateNewTour
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateNewTourRequest'
+              - example:
+                  ratingsAverage: 3.9
+                  ratingsQuantity: 69
+                  images:
+                  - tour-1-1.jpg
+                  - tour-1-2.jpg
+                  - tour-1-3.jpg
+                  name: 'patel pav bhaji '
+                  duration: 7
+                  maxGroupSize: 25
+                  difficulty: medium
+                  price: 7356
+                  summary: '  Fumio Kishida'
+                  description: Japan is an island country in East Asia. It is situated in the northwest Pacific Ocean, and is bordered on the west by the Sea of Japan, while extending from the Sea of Okhotsk in the north toward the East China Sea, Philippine Sea, and Taiwan in the south.
+                  imageCover: tour-1-cover.jpg
+            example:
+              ratingsAverage: 3.9
+              ratingsQuantity: 69
+              images:
+              - tour-1-1.jpg
+              - tour-1-2.jpg
+              - tour-1-3.jpg
+              name: 'patel pav bhaji '
+              duration: 7
+              maxGroupSize: 25
+              difficulty: medium
+              price: 7356
+              summary: '  Fumio Kishida'
+              description: Japan is an island country in East Asia. It is situated in the northwest Pacific Ocean, and is bordered on the west by the Sea of Japan, while extending from the Sea of Okhotsk in the north toward the East China Sea, Philippine Sea, and Taiwan in the south.
+              imageCover: tour-1-cover.jpg
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+    get:
+      tags:
+      - tours
+      summary: Get tours data
+      operationId: Gettoursdata
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /tours/5c88fa8cf4afda39709c2955:
+    get:
+      tags:
+      - tours
+      summary: get single tour
+      operationId: getsingletour
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+    patch:
+      tags:
+      - tours
+      summary: update tour
+      operationId: updatetour
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updatetourrequest'
+              - example:
+                  guides:
+                  - 5c8a1dfa2f8fb814b56fa181
+                  - 634fcb80b7a994199ce0a985
+            example:
+              guides:
+              - 5c8a1dfa2f8fb814b56fa181
+              - 634fcb80b7a994199ce0a985
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /tours/6348ef27e3cb7c41e8d8fc7a:
+    delete:
+      tags:
+      - tours
+      summary: delete tour
+      operationId: deletetour
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /tours/top-5-cheap:
+    get:
+      tags:
+      - tours
+      summary: top 5 cheap plan
+      operationId: top5cheapplan
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /tours/tour-stats:
+    get:
+      tags:
+      - tours
+      summary: tour states
+      operationId: tourstates
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /tours/monthly-plan/2021:
+    get:
+      tags:
+      - tours
+      summary: tour monthly plan
+      operationId: tourmonthlyplan
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /:
+    get:
+      tags:
+      - tours
+      summary: Get Tours Within Radius
+      operationId: GetToursWithinRadius
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /users/signup:
+    post:
+      tags:
+      - authentication
+      summary: signup user
+      operationId: signupuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/signupuserrequest'
+              - example:
+                  name: sonu sood
+                  email: sonusood1@gmail.com
+                  password: sonusood123
+                  passwordConfirm: sonusood123
+            example:
+              name: sonu sood
+              email: sonusood1@gmail.com
+              password: sonusood123
+              passwordConfirm: sonusood123
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users:
+    get:
+      tags:
+      - authentication
+      summary: get all user
+      operationId: getalluser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/login:
+    post:
+      tags:
+      - authentication
+      summary: login user
+      operationId: loginuser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/loginuserrequest'
+              - example:
+                  email: sonusood1@gmail.com
+                  password: sonusood123
+            example:
+              email: sonusood1@gmail.com
+              password: sonusood123
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/forgotPassword:
+    post:
+      tags:
+      - authentication
+      summary: forget password
+      operationId: forgetpassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/forgetpasswordrequest'
+              - example:
+                  email: aliabhatt@gmail.com
+            example:
+              email: aliabhatt@gmail.com
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/resetPassword/501492c4c01e070a7db42bbcec105c0865a5837ff708b45861199a6bfa994f91:
+    patch:
+      tags:
+      - authentication
+      summary: reset password
+      operationId: resetpassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/resetpasswordrequest'
+              - example:
+                  password: aliabhatt123
+                  passwordConfirm: aliabhatt321
+            example:
+              password: aliabhatt123
+              passwordConfirm: aliabhatt321
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/updateMyPassword:
+    patch:
+      tags:
+      - authentication
+      summary: update my password
+      operationId: updatemypassword
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updatemypasswordrequest'
+              - example:
+                  passwordCurrent: aliabhatt123
+                  password: aliabhatt321
+                  passwordConfirm: aliabhatt321
+            example:
+              passwordCurrent: aliabhatt123
+              password: aliabhatt321
+              passwordConfirm: aliabhatt321
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/updateMe:
+    patch:
+      tags:
+      - authentication
+      summary: update current user data
+      operationId: updatecurrentuserdata
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updatecurrentuserdatarequest'
+              - example:
+                  name: sanket
+                  role: admin
+            example:
+              name: sanket
+              role: admin
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/deleteMe:
+    delete:
+      tags:
+      - authentication
+      summary: delete user
+      operationId: deleteuser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /users/634e3662fb749e3f104b3782:
+    delete:
+      tags:
+      - authentication
+      summary: delete user by id Copy
+      operationId: deleteuserbyidCopy
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+      servers:
+      - url: http://localhost:5000/api/v1
+        variables: {}
+  /reviews:
+    post:
+      tags:
+      - review
+      summary: create review
+      operationId: createreview
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createreviewrequest'
+              - example:
+                  review: Loved it
+                  rating: 5
+                  tour: 5c88fa8cf4afda39709c2955
+                  user: 634fcb80b7a994199ce0a985
+            example:
+              review: Loved it
+              rating: 5
+              tour: 5c88fa8cf4afda39709c2955
+              user: 634fcb80b7a994199ce0a985
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+    get:
+      tags:
+      - review
+      summary: GET REVIEW DATA
+      operationId: GETREVIEWDATA
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+  /reviews/634ff4ec83625f59042c07c5:
+    get:
+      tags:
+      - review
+      summary: get single review
+      operationId: getsinglereview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+    patch:
+      tags:
+      - review
+      summary: update review
+      operationId: updatereview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+  /tours/5c88fa8cf4afda39709c2955/reviews:
+    post:
+      tags:
+      - review
+      summary: add review by refernce
+      operationId: addreviewbyrefernce
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/addreviewbyreferncerequest'
+              - example:
+                  rating: 5
+                  review: amazing tour
+            example:
+              rating: 5
+              review: amazing tour
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+  /reviews/5cd2f257db447337b3ff3f00:
+    delete:
+      tags:
+      - review
+      summary: delete review
+      operationId: deletereview
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+      servers:
+      - url: http://example.com/api/v1
+        variables: {}
+components:
+  schemas:
+    CreateNewTourRequest:
+      title: CreateNewTourRequest
+      required:
+      - ratingsAverage
+      - ratingsQuantity
+      - images
+      - name
+      - duration
+      - maxGroupSize
+      - difficulty
+      - price
+      - summary
+      - description
+      - imageCover
+      type: object
+      properties:
+        ratingsAverage:
+          type: number
+        ratingsQuantity:
+          type: integer
+          format: int32
+        images:
+          type: array
+          items:
+            type: string
+          description: ''
+        name:
+          type: string
+        duration:
+          type: integer
+          format: int32
+        maxGroupSize:
+          type: integer
+          format: int32
+        difficulty:
+          type: string
+        price:
+          type: integer
+          format: int32
+        summary:
+          type: string
+        description:
+          type: string
+        imageCover:
+          type: string
+      example:
+        ratingsAverage: 3.9
+        ratingsQuantity: 69
+        images:
+        - tour-1-1.jpg
+        - tour-1-2.jpg
+        - tour-1-3.jpg
+        name: 'patel pav bhaji '
+        duration: 7
+        maxGroupSize: 25
+        difficulty: medium
+        price: 7356
+        summary: '  Fumio Kishida'
+        description: Japan is an island country in East Asia. It is situated in the northwest Pacific Ocean, and is bordered on the west by the Sea of Japan, while extending from the Sea of Okhotsk in the north toward the East China Sea, Philippine Sea, and Taiwan in the south.
+        imageCover: tour-1-cover.jpg
+    updatetourrequest:
+      title: updatetourrequest
+      required:
+      - guides
+      type: object
+      properties:
+        guides:
+          type: array
+          items:
+            type: string
+          description: ''
+      example:
+        guides:
+        - 5c8a1dfa2f8fb814b56fa181
+        - 634fcb80b7a994199ce0a985
+    signupuserrequest:
+      title: signupuserrequest
+      required:
+      - name
+      - email
+      - password
+      - passwordConfirm
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+      example:
+        name: sonu sood
+        email: sonusood1@gmail.com
+        password: sonusood123
+        passwordConfirm: sonusood123
+    loginuserrequest:
+      title: loginuserrequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: sonusood1@gmail.com
+        password: sonusood123
+    forgetpasswordrequest:
+      title: forgetpasswordrequest
+      required:
+      - email
+      type: object
+      properties:
+        email:
+          type: string
+      example:
+        email: aliabhatt@gmail.com
+    resetpasswordrequest:
+      title: resetpasswordrequest
+      required:
+      - password
+      - passwordConfirm
+      type: object
+      properties:
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+      example:
+        password: aliabhatt123
+        passwordConfirm: aliabhatt321
+    updatemypasswordrequest:
+      title: updatemypasswordrequest
+      required:
+      - passwordCurrent
+      - password
+      - passwordConfirm
+      type: object
+      properties:
+        passwordCurrent:
+          type: string
+        password:
+          type: string
+        passwordConfirm:
+          type: string
+      example:
+        passwordCurrent: aliabhatt123
+        password: aliabhatt321
+        passwordConfirm: aliabhatt321
+    updatecurrentuserdatarequest:
+      title: updatecurrentuserdatarequest
+      required:
+      - name
+      - role
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+      example:
+        name: sanket
+        role: admin
+    createreviewrequest:
+      title: createreviewrequest
+      required:
+      - review
+      - rating
+      - tour
+      - user
+      type: object
+      properties:
+        review:
+          type: string
+        rating:
+          type: integer
+          format: int32
+        tour:
+          type: string
+        user:
+          type: string
+      example:
+        review: Loved it
+        rating: 5
+        tour: 5c88fa8cf4afda39709c2955
+        user: 634fcb80b7a994199ce0a985
+    addreviewbyreferncerequest:
+      title: addreviewbyreferncerequest
+      required:
+      - rating
+      - review
+      type: object
+      properties:
+        rating:
+          type: integer
+          format: int32
+        review:
+          type: string
+      example:
+        rating: 5
+        review: amazing tour
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: tours
+- name: authentication
+- name: review
+- name: geospatical query
